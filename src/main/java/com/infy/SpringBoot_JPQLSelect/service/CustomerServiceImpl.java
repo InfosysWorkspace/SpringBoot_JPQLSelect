@@ -16,19 +16,26 @@ public class CustomerServiceImpl implements  CustomerService{
 
     @Autowired
     private CustomerRepository customerRepository;
+//
+//    @Override
+//    public List<CustomerDTO> getCustomerDetails() throws InfyBankException{
+//        return customerRepository.getCustomerDetails();
+//    }
+//
+//    @Override
+//    public List<Object[]> getCustomerNameAndDob() throws InfyBankException{
+//        return customerRepository.getCustomerNameAndDob();
+//    }
+//
+//    @Override
+//    public List<String> getCustomerNames() throws InfyBankException{
+//        return customerRepository.getCustomerNames();
+//    }
 
-    @Override
-    public List<CustomerDTO> getCustomerDetails() throws InfyBankException{
-        return customerRepository.getCustomerDetails();
-    }
 
+    //		JPQL Grouping-Demo
     @Override
-    public List<Object[]> getCustomerNameAndDob() throws InfyBankException{
-        return customerRepository.getCustomerNameAndDob();
-    }
-
-    @Override
-    public List<String> getCustomerNames() throws InfyBankException{
-        return customerRepository.getCustomerNames();
+    public List<Object[]> getCustomerCountForCities() throws InfyBankException {
+        return customerRepository.getCustomerCountForCities();
     }
 }

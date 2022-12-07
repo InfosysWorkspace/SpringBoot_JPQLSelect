@@ -29,55 +29,70 @@ public class SpringBootJpqlSelectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		getCustomerDetails();
-		getCustomerNameAndDob();
-		getCustomerNames();
+//		getCustomerDetails();
+//		getCustomerNameAndDob();
+//		getCustomerNames();
+
+//		JPQL Grouping-Demo
+		getCityWiseCustomerCount();
 
 	}
 
-	// Get Customer Details
-	public void getCustomerDetails(){
+//	// Get Customer Details
+//	public void getCustomerDetails(){
+//		try{
+//			List<CustomerDTO> customerDTOs = service.getCustomerDetails();
+//			for(CustomerDTO customerDTO : customerDTOs){
+//				LOGGER.info(customerDTO);
+//			}
+//			LOGGER.info("\n");
+//		} catch (Exception e){
+//			String message = environment.getProperty(e.getMessage(),
+//					"Some exception occured. Please check log file for more details.");
+//			LOGGER.info(message);
+//		}
+//	}
+//
+//	// Get Customer Name and DoB
+//	public void getCustomerNameAndDob(){
+//		try{
+//			List<Object[]> objects = service.getCustomerNameAndDob();
+//			for(Object[] object : objects){
+//				LOGGER.info(object[0] + "\t\t" +object[1]);
+//			}
+//			LOGGER.info("\n");
+//		} catch (Exception e){
+//			String message = environment.getProperty(e.getMessage(),
+//					"Some exception occured. Please check log file for more details.");
+//			LOGGER.info(message);
+//		}
+//	}
+//
+//	// Get Customer Names
+//	public void getCustomerNames(){
+//		try {
+//			List<String> customerNames = service.getCustomerNames();
+//			for(String name : customerNames){
+//				LOGGER.info(name);
+//			}
+//			LOGGER.info("\n");
+//		} catch (Exception e){
+//			String message = environment.getProperty(e.getMessage(),
+//					"Some exception occured. Please check log file for more details.");
+//			LOGGER.info(message);
+//		}
+//	}
+
+	//		JPQL Grouping-Demo
+	public void getCityWiseCustomerCount(){
 		try{
-			List<CustomerDTO> customerDTOs = service.getCustomerDetails();
-			for(CustomerDTO customerDTO : customerDTOs){
-				LOGGER.info(customerDTO);
+			List<Object[]> objects = service.getCustomerCountForCities();
+			for(Object[] object: objects) {
+				LOGGER.info(object[0] + " -> " + object[1]);
 			}
-			LOGGER.info("\n");
 		} catch (Exception e){
-			String message = environment.getProperty(e.getMessage(),
-					"Some exception occured. Please check log file for more details.");
+			String message = environment.getProperty(e.getMessage(), "Some exception occured. Please check log file for more details");
 			LOGGER.info(message);
 		}
 	}
-
-	// Get Customer Name and DoB
-	public void getCustomerNameAndDob(){
-		try{
-			List<Object[]> objects = service.getCustomerNameAndDob();
-			for(Object[] object : objects){
-				LOGGER.info(object[0] + "\t\t" +object[1]);
-			}
-			LOGGER.info("\n");
-		} catch (Exception e){
-			String message = environment.getProperty(e.getMessage(),
-					"Some exception occured. Please check log file for more details.");
-			LOGGER.info(message);
-		}
-	}
-
-	// Get Customer Names
-	public void getCustomerNames(){
-		try {
-			List<String> customerNames = service.getCustomerNames();
-			for(String name : customerNames){
-				LOGGER.info(name);
-			}
-			LOGGER.info("\n");
-		} catch (Exception e){
-			String message = environment.getProperty(e.getMessage(),
-					"Some exception occured. Please check log file for more details.");
-			LOGGER.info(message);
-		}
-	}
-
 }
